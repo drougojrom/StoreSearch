@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		303BB91A1CD9199600C70064 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303BB9191CD9199600C70064 /* SearchResult.swift */; };
 		30C707301CCFE7F60061DD98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */; };
 		30C707321CCFE7F60061DD98 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C707311CCFE7F60061DD98 /* SearchViewController.swift */; };
 		30C707351CCFE7F60061DD98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C707331CCFE7F60061DD98 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		303BB9191CD9199600C70064 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		30C7072C1CCFE7F60061DD98 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30C707311CCFE7F60061DD98 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */,
 				30C707311CCFE7F60061DD98 /* SearchViewController.swift */,
+				303BB9191CD9199600C70064 /* SearchResult.swift */,
 				30C707331CCFE7F60061DD98 /* Main.storyboard */,
 				30C707361CCFE7F60061DD98 /* Assets.xcassets */,
 				30C707381CCFE7F60061DD98 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C707321CCFE7F60061DD98 /* SearchViewController.swift in Sources */,
+				303BB91A1CD9199600C70064 /* SearchResult.swift in Sources */,
 				30C707301CCFE7F60061DD98 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +291,7 @@
 				30C707401CCFE7F60061DD98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
