@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    func customizeAppearance(){
+        let barTintColor = UIColor(red: 20/255.0, green: 160/255.0, blue: 160/255.0, alpha: 1.0)
+        UISearchBar.appearance().barTintColor = barTintColor
+        
+        window!.tintColor = UIColor(red: 10/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1)
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        customizeAppearance()
+        
+        
         return true
     }
 
