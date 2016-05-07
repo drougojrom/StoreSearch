@@ -16,6 +16,7 @@
 		30C707351CCFE7F60061DD98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C707331CCFE7F60061DD98 /* Main.storyboard */; };
 		30C707371CCFE7F60061DD98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C707361CCFE7F60061DD98 /* Assets.xcassets */; };
 		30C7073A1CCFE7F60061DD98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C707381CCFE7F60061DD98 /* LaunchScreen.storyboard */; };
+		30FB74821CDA32C800618BAF /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FB74811CDA32C800618BAF /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		30C707361CCFE7F60061DD98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30C707391CCFE7F60061DD98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30C7073B1CCFE7F60061DD98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30FB74811CDA32C800618BAF /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				30C707361CCFE7F60061DD98 /* Assets.xcassets */,
 				303BB91B1CD9256100C70064 /* SearchResultCell.xib */,
 				303BB9211CD931AA00C70064 /* NothingFoundCellNib.xib */,
+				30FB74811CDA32C800618BAF /* LoadingCell.xib */,
 				30C707381CCFE7F60061DD98 /* LaunchScreen.storyboard */,
 				30C7073B1CCFE7F60061DD98 /* Info.plist */,
 			);
@@ -137,6 +140,7 @@
 			files = (
 				30C7073A1CCFE7F60061DD98 /* LaunchScreen.storyboard in Resources */,
 				303BB9221CD931AA00C70064 /* NothingFoundCellNib.xib in Resources */,
+				30FB74821CDA32C800618BAF /* LoadingCell.xib in Resources */,
 				30C707371CCFE7F60061DD98 /* Assets.xcassets in Resources */,
 				303BB91C1CD9256100C70064 /* SearchResultCell.xib in Resources */,
 				30C707351CCFE7F60061DD98 /* Main.storyboard in Resources */,
