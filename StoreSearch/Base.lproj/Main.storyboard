@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Search View Controller-->
@@ -33,33 +34,35 @@
                                 </connections>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HpF-is-XI7">
-                                <rect key="frame" x="150" y="64" width="300" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="2MH-O5-xrR"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="64" width="560" height="29"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Music"/>
                                     <segment title="Software"/>
                                     <segment title="E-Books"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2cx-2B-CNV"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="sL1-pr-Ocz" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Ek7-bo-K1y"/>
                             <constraint firstItem="Fk1-uh-qfR" firstAttribute="leading" secondItem="sL1-pr-Ocz" secondAttribute="leading" id="Pel-kv-GN7"/>
+                            <constraint firstItem="HpF-is-XI7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="UAB-ac-iXS"/>
+                            <constraint firstItem="HpF-is-XI7" firstAttribute="top" secondItem="Fk1-uh-qfR" secondAttribute="bottom" id="Y1K-wO-Iof"/>
                             <constraint firstAttribute="trailing" secondItem="Fk1-uh-qfR" secondAttribute="trailing" id="ehe-go-1nv"/>
+                            <constraint firstItem="HpF-is-XI7" firstAttribute="centerX" secondItem="Fk1-uh-qfR" secondAttribute="centerX" id="hcU-d5-3nk"/>
                             <constraint firstItem="Fk1-uh-qfR" firstAttribute="trailing" secondItem="sL1-pr-Ocz" secondAttribute="trailing" id="hhq-fz-QGP"/>
-                            <constraint firstItem="Fk1-uh-qfR" firstAttribute="centerX" secondItem="HpF-is-XI7" secondAttribute="centerX" id="iLM-fj-Q0w"/>
-                            <constraint firstItem="HpF-is-XI7" firstAttribute="top" secondItem="Fk1-uh-qfR" secondAttribute="bottom" id="leR-Md-tOW"/>
                             <constraint firstItem="Fk1-uh-qfR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="nQC-iA-ikF"/>
+                            <constraint firstItem="sL1-pr-Ocz" firstAttribute="top" secondItem="HpF-is-XI7" secondAttribute="bottom" constant="8" symbolic="YES" id="oYR-w5-5Ia"/>
                             <constraint firstItem="Fk1-uh-qfR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qH2-dF-NiN"/>
-                            <constraint firstItem="sL1-pr-Ocz" firstAttribute="top" secondItem="HpF-is-XI7" secondAttribute="bottom" constant="8" symbolic="YES" id="xWH-WH-sBh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Fk1-uh-qfR" id="K5r-Uq-Hhk"/>
+                        <outlet property="segmentControl" destination="HpF-is-XI7" id="MxK-pF-Pwj"/>
                         <outlet property="tableView" destination="sL1-pr-Ocz" id="5ZI-V7-UVz"/>
                     </connections>
                 </viewController>

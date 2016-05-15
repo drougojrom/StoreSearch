@@ -26,6 +26,16 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
+        
+        print("Segment changed: \(sender.selectedSegmentIndex)")
+        performSearch()
+        
+    }
+    
+    
     
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -244,7 +254,13 @@ class SearchViewController: UIViewController {
 // ***********
 
 extension SearchViewController :UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func performSearch(searchBar: UISearchBar) {
+        
+        performSearch()
+        
+    }
+    
+    func performSearch(){
         
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
@@ -264,7 +280,7 @@ extension SearchViewController :UISearchBarDelegate {
             let session = NSURLSession.sharedSession()
             // 3- create dataTask for sending HTTPS Get
             dataTask = session.dataTaskWithURL(url, completionHandler: {
-            
+                
                 data, response, error in
                 
                 if let error = error where error.code == -999 {
@@ -294,6 +310,7 @@ extension SearchViewController :UISearchBarDelegate {
             // 4- start dataTask
             dataTask?.resume()
         }
+        
     }
 
 
