@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched =  false
     var isLoading = false
+    var dataTask: NSURLSessionDataTask?
     
     //MARK: - @IBOutlet
 
@@ -244,9 +245,11 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController :UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-
+        
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
+            
+            dataTask?.cancel()
             
             isLoading = true
             tableView.reloadData()
@@ -260,12 +263,13 @@ extension SearchViewController :UISearchBarDelegate {
             // 2- obtain session object
             let session = NSURLSession.sharedSession()
             // 3- create dataTask for sending HTTPS Get
-            let dataTask = session.dataTaskWithURL(url, completionHandler: {
+            dataTask = session.dataTaskWithURL(url, completionHandler: {
             
                 data, response, error in
                 
-                if let error = error {
+                if let error = error where error.code == -999 {
                     print("Failure \(error)")
+                    return
                 } else if let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200 {
                     if let data = data, dictionary = self.parseJSON(data) {
                         self.searchResults = self.parseDictionary(dictionary)
@@ -277,15 +281,18 @@ extension SearchViewController :UISearchBarDelegate {
                         })
                         return
                     }
-                    
-                    
-                    
                 } else {
                     print("Failure \(response)")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.hasSearched = false
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                        self.showNetworkError()
+                    })
                 }
             })
             // 4- start dataTask
-            dataTask.resume()
+            dataTask?.resume()
         }
     }
 
