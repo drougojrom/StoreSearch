@@ -42,23 +42,11 @@ class SearchViewController: UIViewController {
         return url!
     }
     
-    func performStoreRequestWithURL(url: NSURL) -> String? {
-        
+    func parseJSON(data: NSData) -> [String: AnyObject]? {
         do {
-            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
         } catch {
-            print("Download error: \(error)")
-            return nil
-        }
-    }
-    
-    func parseJSON(jsonString: String) -> [String: AnyObject]? {
-        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) else { return nil }
-        
-        do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-        } catch {
-            print("Error with : \(error)")
+            print("JSON Error: \(error)")
             return nil
         }
     }
@@ -266,34 +254,42 @@ extension SearchViewController :UISearchBarDelegate {
             hasSearched = true
             searchResults = [SearchResult]()
             
+            // 1- create NSURL object
+            let url = urlWithSearchText(searchBar.text!)
             
-            // 1- get reference to queue
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            // 2- obtain session object
+            let session = NSURLSession.sharedSession()
+            // 3- create dataTask for sending HTTPS Get
+            let dataTask = session.dataTaskWithURL(url, completionHandler: {
             
-            // 2- dispatch a closure from it
-            dispatch_async(queue) {
-                let url = self.urlWithSearchText(searchBar.text!)
+                data, response, error in
                 
-                if let jsonString = self.performStoreRequestWithURL(url),
-                    let dictionary = self.parseJSON(jsonString) {
-                    
-                    self.searchResults = self.parseDictionary(dictionary)
-                    self.searchResults.sortInPlace(<)
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.isLoading = false
-                        self.tableView.reloadData()
+                if let error = error {
+                    print("Failure \(error)")
+                } else if let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200 {
+                    if let data = data, dictionary = self.parseJSON(data) {
+                        self.searchResults = self.parseDictionary(dictionary)
+                        self.searchResults.sortInPlace(<)
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        })
+                        return
                     }
-                    return
                     
+                    
+                    
+                } else {
+                    print("Failure \(response)")
                 }
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.showNetworkError()
-                }
-            }
+            })
+            // 4- start dataTask
+            dataTask.resume()
         }
     }
-    
+
+
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
     }
