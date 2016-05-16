@@ -43,11 +43,19 @@ class SearchViewController: UIViewController {
         static let loadingCell = "LoadingCell"
     }
     
-    func urlWithSearchText(searchText: String) -> NSURL {
+    func urlWithSearchText(searchText: String, category: Int) -> NSURL {
+        
+        let entityName: String
+        switch category {
+        case 1: entityName = "musicTrack"
+        case 2: entityName = "software"
+        case 3: entityName = "ebook"
+        default: entityName = ""
+        }
         
         let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedSearchText, entityName)
         let url = NSURL(string: urlString)
         
         return url!
@@ -274,7 +282,7 @@ extension SearchViewController :UISearchBarDelegate {
             searchResults = [SearchResult]()
             
             // 1- create NSURL object
-            let url = urlWithSearchText(searchBar.text!)
+            let url = urlWithSearchText(searchBar.text!, category: segmentControl.selectedSegmentIndex)
             
             // 2- obtain session object
             let session = NSURLSession.sharedSession()
@@ -353,14 +361,9 @@ extension SearchViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
             
             let searchResult = searchResults[indexPath.row]
-            cell.nameLabel.text = searchResult.name
-            if searchResult.artistName.isEmpty {
-                cell.artistNameLabel.text = "Unknown"
-            } else {
-                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
+            cell.configureForSearchResult(searchResult)
+            
             }
-        }
-        
         return cell
     }
 }
