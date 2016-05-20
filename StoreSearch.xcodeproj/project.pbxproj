@@ -11,6 +11,7 @@
 		303BB91C1CD9256100C70064 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303BB91B1CD9256100C70064 /* SearchResultCell.xib */; };
 		303BB91E1CD9279B00C70064 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303BB91D1CD9279B00C70064 /* SearchResultCell.swift */; };
 		303BB9221CD931AA00C70064 /* NothingFoundCellNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 303BB9211CD931AA00C70064 /* NothingFoundCellNib.xib */; };
+		309543551CEF424500DC3AA0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309543541CEF424500DC3AA0 /* DetailViewController.swift */; };
 		30C707301CCFE7F60061DD98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */; };
 		30C707321CCFE7F60061DD98 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C707311CCFE7F60061DD98 /* SearchViewController.swift */; };
 		30C707351CCFE7F60061DD98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C707331CCFE7F60061DD98 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		303BB91B1CD9256100C70064 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		303BB91D1CD9279B00C70064 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		303BB9211CD931AA00C70064 /* NothingFoundCellNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NothingFoundCellNib.xib; path = ../NothingFoundCellNib.xib; sourceTree = "<group>"; };
+		309543541CEF424500DC3AA0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		30C7072C1CCFE7F60061DD98 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30C707311CCFE7F60061DD98 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		30C7072E1CCFE7F60061DD98 /* StoreSearch */ = {
 			isa = PBXGroup;
 			children = (
+				309543541CEF424500DC3AA0 /* DetailViewController.swift */,
 				30C7072F1CCFE7F60061DD98 /* AppDelegate.swift */,
 				30C707311CCFE7F60061DD98 /* SearchViewController.swift */,
 				30DC80651CEA5916003B1323 /* UIImageView+DownloadImage.swift */,
@@ -156,6 +159,7 @@
 				30C707321CCFE7F60061DD98 /* SearchViewController.swift in Sources */,
 				303BB91A1CD9199600C70064 /* SearchResult.swift in Sources */,
 				303BB91E1CD9279B00C70064 /* SearchResultCell.swift in Sources */,
+				309543551CEF424500DC3AA0 /* DetailViewController.swift in Sources */,
 				30C707301CCFE7F60061DD98 /* AppDelegate.swift in Sources */,
 				30DC80661CEA5916003B1323 /* UIImageView+DownloadImage.swift in Sources */,
 			);

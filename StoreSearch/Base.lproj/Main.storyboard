@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -64,11 +64,61 @@
                         <outlet property="searchBar" destination="Fk1-uh-qfR" id="K5r-Uq-Hhk"/>
                         <outlet property="segmentControl" destination="HpF-is-XI7" id="MxK-pF-Pwj"/>
                         <outlet property="tableView" destination="sL1-pr-Ocz" id="5ZI-V7-UVz"/>
+                        <segue destination="Utk-13-b8C" kind="presentation" identifier="ShowDetail" id="kXO-eT-qPK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="380" y="349"/>
+            <point key="canvasLocation" x="82" y="339"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="jHI-co-hNa">
+            <objects>
+                <viewController id="Utk-13-b8C" customClass="DetailViewController" customModule="StoreSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="keM-y6-ebl"/>
+                        <viewControllerLayoutGuide type="bottom" id="XYZ-oO-0rr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UFa-O6-VpT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7q-E8-tLS" userLabel="Pop-up View">
+                                <rect key="frame" x="180" y="236" width="240" height="240"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44w-4d-23W">
+                                        <rect key="frame" x="8" y="8" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="7zG-TE-zpF"/>
+                                        </constraints>
+                                        <state key="normal" image="CloseButton"/>
+                                        <connections>
+                                            <action selector="close" destination="Utk-13-b8C" eventType="touchUpInside" id="pv5-Nm-YrM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="44w-4d-23W" firstAttribute="top" secondItem="G7q-E8-tLS" secondAttribute="topMargin" id="85C-My-JrN"/>
+                                    <constraint firstItem="44w-4d-23W" firstAttribute="leading" secondItem="G7q-E8-tLS" secondAttribute="leadingMargin" id="l7B-iB-bH9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G7q-E8-tLS" firstAttribute="top" secondItem="keM-y6-ebl" secondAttribute="bottom" constant="216" id="QAz-8b-C0b"/>
+                            <constraint firstItem="XYZ-oO-0rr" firstAttribute="top" secondItem="G7q-E8-tLS" secondAttribute="bottom" constant="124" id="bVh-Uw-poM"/>
+                            <constraint firstItem="G7q-E8-tLS" firstAttribute="centerX" secondItem="UFa-O6-VpT" secondAttribute="centerX" id="jl2-xj-peL"/>
+                            <constraint firstItem="G7q-E8-tLS" firstAttribute="leading" secondItem="UFa-O6-VpT" secondAttribute="leading" constant="180" id="vze-Oe-FcE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbp-Ky-h1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="339"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CloseButton" width="15" height="15"/>
+    </resources>
 </document>
