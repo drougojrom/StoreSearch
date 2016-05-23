@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
     
-    
+    var searchResult: SearchResult!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +43,21 @@ class DetailViewController: UIViewController {
         gestureRecongnizer.cancelsTouchesInView = false
         gestureRecongnizer.delegate = self
         view.addGestureRecognizer(gestureRecongnizer)
+        if searchResult != nil {
+            updateUI()
+        }
+    }
+    
+    func updateUI() {
+        nameLabel.text = searchResult.name
+        
+        if searchResult.artistName.isEmpty {
+            artistNameLabel.text = "Unknown"
+        } else {
+            artistNameLabel.text = searchResult.artistName
+        }
+        kindLabel.text = searchResult.kind
+        genreLabel.text = searchResult.genre
     }
 
     override func didReceiveMemoryWarning() {
