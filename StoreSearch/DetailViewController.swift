@@ -20,13 +20,26 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceButton: UIButton!
     
     var searchResult: SearchResult!
-    
+    var downloadTask: NSURLSessionDownloadTask?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         modalPresentationStyle = .Custom
         transitioningDelegate = self
+    }
+    
+    deinit {
+        print("deint \(self)")
+        downloadTask?.cancel()
+    }
+    
+    @IBAction func openInStore(sender: UIButton) {
+        
+        if let url = NSURL(string: searchResult.storeURL) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
     }
     
     @IBAction func close(){
@@ -56,8 +69,27 @@ class DetailViewController: UIViewController {
         } else {
             artistNameLabel.text = searchResult.artistName
         }
-        kindLabel.text = searchResult.kind
+        kindLabel.text = searchResult.kindForDisplay()
         genreLabel.text = searchResult.genre
+        
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.currencyCode = searchResult.currency
+        
+        let priceText: String
+        if searchResult.price == 0 {
+            priceText = "Free"
+        } else if let text = formatter.stringFromNumber(searchResult.price) {
+            priceText = text
+        } else {
+            priceText = ""
+        }
+        
+        if let url = NSURL(string: searchResult.artworkURL100) {
+            downloadTask = artworkImageView.loadImageWithURL(url)
+        }
+        
+        priceButton.setTitle(priceText, forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
