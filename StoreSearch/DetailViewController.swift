@@ -34,6 +34,13 @@ class DetailViewController: UIViewController {
         downloadTask?.cancel()
     }
     
+    enum AnimationStyle {
+        case Slide
+        case Fade
+    }
+    
+    var dismissAnimationStyle = AnimationStyle.Fade
+    
     @IBAction func openInStore(sender: UIButton) {
         
         if let url = NSURL(string: searchResult.storeURL) {
@@ -43,6 +50,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func close(){
+        dismissAnimationStyle = .Slide
         dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -112,7 +120,12 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAnimationController()
+        switch dismissAnimationStyle {
+        case .Slide:
+            return SlideOutAnimationController()
+        case .Fade:
+            return FadeOutAnimationController()
+        }
     }
 }
 
